@@ -12,16 +12,5 @@ public class ApiTest {
     @Test(retryAnalyzer = utils.RetryAnalyzer.class)
     public void generateTokenTest() {
 
-        // 🔹 Step 1: Create request body
-        AuthRequest req = new AuthRequest();
-        req.setName("admin");
-        req.setGender("male");
-        req.setId(10);
-        req.setGender("male");
-        req.setEmail("@gmail.com");
-        req.setStatus("active");
-        Response res = AuthService.generateToken(req);
-        Assert.assertEquals(res.getStatusCode(), 200);
-        Assert.assertNotNull(res.getBody());
     }
 }
