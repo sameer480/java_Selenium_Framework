@@ -26,11 +26,17 @@ pipeline {
         stage('Wait & Get Logs') {
             steps {
                 bat '''
-                timeout /t 15
+                echo Waiting for pod to be ready...
+
+                kubectl wait --for=condition=Ready pod -l job-name=selenium-test-job --timeout=120s
+
                 kubectl get pods
-                kubectl logs job/%JOB%
+
+                kubectl logs job/selenium-test-job
                 '''
             }
+        }
+
         }
     }
 }
